@@ -12,7 +12,7 @@ import CartWidget from './CartWidget'
 
 const Navbar = () => {
   return (
-    <div>
+    <div className='fondoAmarillo'>
       <Flex>
         <Box p='4'>
           <h3> Tienda de Ski y Snowboard</h3>
