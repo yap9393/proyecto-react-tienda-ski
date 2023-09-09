@@ -12,12 +12,12 @@ import {
 import ItemCount from '../components/ItemCount'
 
 const ItemDetail = ({ productos, itemId }) => {
-    console.log(productos)
+    // console.log(productos)
     const producto = productos.find((p) => p.id.toString() === itemId);
     if (!producto) {
         return <p>Producto no encontrado</p>;
     }
-    console.log(producto)
+    // console.log(producto)
     return (
         <Flex flexWrap="wrap" justifyContent="center">
             <Card direction={{ base: 'column', sm: 'row' }} overflow='hidden' variant='outline' h='500px' w='800px' mt={4} >

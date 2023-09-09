@@ -4,7 +4,7 @@ import ItemDetail from './ItemDetail';
 
 const ItemDetailContainer = ({ productos }) => {
   const { id } = useParams();
-  console.log('el ID en itemDetailCont.. es ' + id);
+  // console.log('el ID en itemDetailCont.. es ' + id);
 
   return (
     <div>

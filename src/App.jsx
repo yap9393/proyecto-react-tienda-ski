@@ -139,7 +139,7 @@ const App = () => {
   ];
 
   const [selectedCategory, setSelectedCategory] = useState("Todos");
-  console.log("2) "+selectedCategory)
+  // console.log("2) "+selectedCategory)
 
   return (
     <BrowserRouter>
@@ -155,17 +155,3 @@ const App = () => {
   );
 }
 export default App
-
-
-
-
-// <BrowserRouter>
-    //   <NavBar setSelectedCategory={setSelectedCategory} />
-    //   <Routes>
-    //     <Route exact path="/" element={<Home />} />
-    //     <Route exact path="/about" element={<About />} />
-    //     <Route exact path="/cart" element={<Cart />} />
-    //   </Routes>
-    //   <ItemListContainer selectedCategory={selectedCategory} />
-    //   <ItemCount initial={1} stock={10} onAdd={(quantity) => console.log('cantidad agregada', quantity)} />
-    // </BrowserRouter>

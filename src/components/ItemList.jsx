@@ -8,7 +8,7 @@ const ItemList = ({ productos, selectedCategory }) => {
   selectedCategory === "Todos"
   ? productos
   : productos.filter((producto) => producto.categoria=== selectedCategory.toLowerCase());
-  console.log('4) CATEGORIA :' +selectedCategory)
+  // console.log('4) CATEGORIA :' +selectedCategory)
 
   return (
     <Flex flexWrap="wrap" justifyContent="center">

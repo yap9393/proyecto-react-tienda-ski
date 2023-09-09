@@ -3,7 +3,7 @@ import { useState } from 'react'
 
 
 const ItemCount = ({ stock, initial, onAdd }) => {
-    console.log('6)el stock es: ' + stock)
+    // console.log('6)el stock es: ' + stock)
     const [quantity, setQuantity] = useState(0)
 
 
