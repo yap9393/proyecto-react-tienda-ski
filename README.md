@@ -7,3 +7,4 @@ function prueba(){
 return 'demostracion de prueba' 
 };
 ``````
+![Alt text](funcionamiento.gif)
