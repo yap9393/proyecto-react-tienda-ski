@@ -1,30 +1,36 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, useContext } from 'react'
+import { useToast } from '@chakra-ui/react'
+import { CartContext } from '../../context/ShoppingCartContext'
 
 
-const ItemCount = ({ stock, initial, onAdd }) => {
-    // console.log('6)el stock es: ' + stock)
-    const [quantity, setQuantity] = useState(0)
+const ItemCount = ({ stock, producto }) => {
 
+    const [quantity, setQuantity] = useState(1)
+    const toast = useToast()
+    const { addItem, removeItem } = useContext(CartContext)
 
     const increment = () => {
         if (quantity == stock) {
-            alert('No hay stock suficiente')
+            toast({
+                position: 'top-left',
+                title: "No hay stock suficiente",
+                status: "error",
+                isClosable: true,
+            });
+
         }
         if (quantity < stock) {
             setQuantity(quantity + 1)
         }
     }
+
     const decrement = () => {
         if (quantity > 1) {
             setQuantity(quantity - 1)
 
         }
     }
-    // const onAdd=()=>{
-    //     alert('quantity')
-    // }
-    //funcion que vamos a usar mas adelante que va a tener un push a un array vacio que es mi carrito
 
     return (
         <div className='Counter'>
@@ -34,13 +40,11 @@ const ItemCount = ({ stock, initial, onAdd }) => {
                 <button className='Button' onClick={increment} > + </button>
             </div>
             <div>
-                <button className='buy-now-button' onClick={() => onAdd(quantity)} disabled={!stock} > Agregar al carrito </button>
+
+                <button className='remove-button' onClick={() => removeItem(producto.id)}> Eliminar todo </button>
+                <button className='buy-now-button' onClick={() => addItem(producto, quantity)}  > Agregar al carrito </button>
             </div>
         </div>
-
-
-
-
     )
 }
 

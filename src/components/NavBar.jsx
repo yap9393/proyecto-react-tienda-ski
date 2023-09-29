@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react';
 import {
   Menu,
   MenuButton,
@@ -7,19 +7,16 @@ import {
   Flex,
   Box,
   Spacer
-} from '@chakra-ui/react'
-import CartWidget from './CartWidget'
-import { Link } from 'react-router-dom'
+} from '@chakra-ui/react';
+import CartWidget from './CartWidget';
+import { Link } from 'react-router-dom';
+import { CategoryContext } from '../../context/CategoryContext';
 
-
-const Navbar = ({ setSelectedCategory }) => {
-  const handleCategoryClick = (category) => {
-    console.log("1)Categoría seleccionada:", category);
-    setSelectedCategory(category);
-  };
+const Navbar = () => {
+  const { handleCategoryClick } = useContext(CategoryContext);
 
   return (
-    <div className='fondoAmarillo'>
+    <div className='navbar fondoAmarillo'>
       <Flex>
         <Box p='4'>
           <Link to={'/'}>
@@ -30,7 +27,7 @@ const Navbar = ({ setSelectedCategory }) => {
         <Box p='4'>
           <Menu>
             <MenuButton>
-              Categorias
+              Categorías
             </MenuButton>
             <MenuList>
               <Link to={`/category/all`}>

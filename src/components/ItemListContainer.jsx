@@ -1,37 +1,29 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import ItemList from '../components/ItemList'
-import { useParams } from 'react-router-dom';
+import { getFirestore, collection, getDocs } from 'firebase/firestore';
 
 
+const ItemListContainer = () => {
+  
+  const [productos, setProductos] = useState([]);
 
-const ItemListContainer = ({selectedCategory, productos}) => {
-  const { categoryId } = useParams();
-  // console.log("La categoría es : " + categoryId);
-  // console.log('3)'+selectedCategory)
-
- const mostrarProductos= new Promise((resolve,reject)=>{
-    if (productos.length>0){
-      setTimeout(()=>{
-        resolve(productos)
-      },3000)
-    } else{
-      reject("no hay productos para mostrar")
-    }
-  })
-
-  mostrarProductos
-  .then((resultado)=>{
-    console.log(resultado)
-  })
-  .catch((error)=>{
-    console.log(error)
-  })
-
+useEffect(() => {
+  const db = getFirestore();
+  const itemsCollection = collection(db, "products");
+  getDocs(itemsCollection)
+    .then((snapshot) => {
+      const docs = snapshot.docs.map((doc) => {
+        const data = doc.data();
+        return { id: doc.id, ...data };
+      });
+      setProductos(docs);
+    });
+}, []);
 
   return (
-    <>
-    <ItemList productos={productos} selectedCategory={selectedCategory} />
-    </>
+    <div className='margin-top-70'>
+      <ItemList productos={productos} />
+    </div>
   )
 
 }
@@ -39,4 +31,3 @@ const ItemListContainer = ({selectedCategory, productos}) => {
 export default ItemListContainer
 
 
- 
