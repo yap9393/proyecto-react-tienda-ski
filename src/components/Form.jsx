@@ -1,8 +1,7 @@
 import React, { useState, useContext } from 'react';
-import { collection, addDoc, getFirestore } from 'firebase/firestore';
+import { collection, addDoc, getFirestore,doc, updateDoc, getDoc } from 'firebase/firestore';
 import Swal from 'sweetalert2';
 import { CartContext } from '../../context/ShoppingCartContext';
-import { doc, updateDoc, getDoc } from 'firebase/firestore';
 
 const Form = () => {
     const { cart, clear } = useContext(CartContext);

@@ -21,14 +21,14 @@ const ShoppingCartProvider = ({ children }) => {
         updatedCart[existingProductIndex].cantidad += maxQuantityToAdd;
         setCart(updatedCart);
         toast({
-          position: 'top-left',
+          position: 'top-right',
           title: `Agregado/s ${quantity} producto/s.`,
           status: 'success',
           isClosable: true,
         });
       } else {
         toast({
-          position: 'top-left',
+          position: 'top-right',
           title: "No hay stock suficiente",
           status: "error",
           isClosable: true,
@@ -45,49 +45,28 @@ const ShoppingCartProvider = ({ children }) => {
       const updatedCart = [...cart, updatedProduct];
       setCart(updatedCart);
       toast({
-        position: 'top-left',
+        position: 'top-right',
         title: `Agregado/s ${quantity} producto/s.`,
         status: 'success',
         isClosable: true,
       });
     }
   };
-
-  const removeItem = (itemId) => {
+  
+  const removeItem = (itemId, quantityToRemove = 0) => {
     const itemToRemove = cart.find((item) => item.id === itemId);
+  
     if (!itemToRemove) {
       toast({
-        position: 'top-left',
-        title: `El producto no se encuentra en el carrito`,
-        status: 'warning',
-        isClosable: true,
-      });
-    } else {
-      const updatedCart = cart.filter((item) => item.id !== itemId);
-      setCart(updatedCart);
-      toast({
-        position: 'top-left',
-        title: `Producto eliminado`,
-        status: 'error',
-        isClosable: true,
-      });
-    }
-  };
-
-  const removeOneItem = (itemId, quantityToRemove = 1) => {
-    const itemToRemove = cart.find((item) => item.id === itemId);
-
-    if (!itemToRemove) {
-      toast({
-        position: 'top-left',
+        position: 'top-right',
         title: `El producto no se encuentra en el carrito`,
         status: 'warning',
         isClosable: true,
       });
       return;
     }
-
-    if (itemToRemove.cantidad <= quantityToRemove) {
+  
+    if (quantityToRemove <= 0 || itemToRemove.cantidad <= quantityToRemove) {
       const updatedCart = cart.filter((item) => item.id !== itemId);
       setCart(updatedCart);
     } else {
@@ -102,31 +81,25 @@ const ShoppingCartProvider = ({ children }) => {
       });
       setCart(updatedCart);
     }
-
+  
     toast({
-      position: 'top-left',
+      position: 'top-right',
       title: `Producto eliminado`,
       status: 'error',
       isClosable: true,
     });
   };
-
+  
 
   const clear = () => {
     setCart([])
   };
 
-  const isInCart = (itemId) => {
-    return cart.some((item) => item.id === itemId);
-  }
-
   useEffect(() => {
   }, [cart]);
 
-
-
   return (
-    <CartContext.Provider value={{ cart, addItem, removeItem, clear, isInCart, removeOneItem }}>
+    <CartContext.Provider value={{ cart, addItem, removeItem, clear }}>
       {children}
     </CartContext.Provider>
   )

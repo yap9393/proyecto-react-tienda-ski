@@ -13,7 +13,7 @@ const ItemCount = ({ stock, producto }) => {
     const increment = () => {
         if (quantity == stock) {
             toast({
-                position: 'top-left',
+                position: 'top-right',
                 title: "No hay stock suficiente",
                 status: "error",
                 isClosable: true,

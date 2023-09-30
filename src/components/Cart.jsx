@@ -7,7 +7,7 @@ import Form from './Form';
 
 
 const Cart = () => {
-  const { cart, removeItem, removeOneItem } = useContext(CartContext);
+  const { cart, removeItem } = useContext(CartContext);
   const totalCarrito = () => {
     let total = 0;
 
@@ -40,7 +40,7 @@ const Cart = () => {
               <span className="item-name">{item.nombre}</span>
               <span className="item-quantity">Cantidad: {item.cantidad}</span>
               <span className="item-price">Precio: ${item.precio}</span>
-              <span ><button className='remove-button-cart' onClick={() => removeOneItem(item.id)}> Eliminar 1</button></span>
+              <span ><button className='remove-button-cart' onClick={() => removeItem(item.id, 1)}> Eliminar 1</button></span>
               <span ><button className='remove-button-cart' onClick={() => removeItem(item.id)}> Eliminar Todo </button></span>
             </li>
           ))}

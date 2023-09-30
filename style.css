@@ -5,6 +5,8 @@
   padding: 0;
   box-sizing: border-box;
   text-align: center;
+  
+
 }
 
 body .fondoAmarillo {
@@ -49,6 +51,10 @@ body .card:hover {
   margin-bottom: 16px;
 }
 
+/* background-image: url('https://c02.purpledshub.com/uploads/sites/41/2021/08/mountains-7ddde89.jpg');
+background-size: cover;
+filter: blur(5px); */
+
 .Button {
   background-color: lightgray;
   border: 1px solid gray;
@@ -77,6 +83,7 @@ body .card:hover {
   font-size: 18px;
   border-radius: 4px;
   cursor: pointer;
+  margin:4px;
 }
 .remove-button-cart{
   background-color: rgb(189, 71, 50);
@@ -97,6 +104,7 @@ body .card:hover {
   font-size: 18px;
   border-radius: 4px;
   cursor: pointer;
+  margin:4px;
 }
 
 .buy-now-button[disabled] {
