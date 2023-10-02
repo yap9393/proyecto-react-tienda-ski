@@ -20,7 +20,7 @@ const Item = ({ producto }) => {
   const { addItem } = useContext(CartContext);
 
   return (
-    <Card className='card' maxW='sm' mt={4}>
+    <Card className='card' maxW='xs' mt={4}>
       <CardBody>
         <Image src={producto.imageURL} alt={producto.nombre} borderRadius='lg' />
         <Stack mt='6' spacing='3'>
