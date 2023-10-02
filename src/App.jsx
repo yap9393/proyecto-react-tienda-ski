@@ -6,6 +6,7 @@ import ItemListContainer from './components/ItemListContainer';
 import Cart from './components/Cart';
 import ItemDetailContainer from './components/ItemDetailContainer';
 import CategoryProvider from '../context/CategoryContext';
+import Footer from './components/Footer';
 
 const App = () => {
   return (
@@ -19,9 +20,11 @@ const App = () => {
             <Route exact path="/item/:id" element={<ItemDetailContainer />} />
             <Route exact path="/cart" element={<Cart />} />
           </Routes>
+          <Footer/> 
         </BrowserRouter>
       </ShoppingCartContext>
     </CategoryProvider>
+    
   );
 };
 

@@ -3,10 +3,13 @@ import { useParams } from 'react-router-dom';
 import ItemDetail from './ItemDetail';
 import { doc, getDoc, getFirestore } from 'firebase/firestore';
 import Loader from './Loader';
+import { Button} from '@chakra-ui/react';
+import { Link } from 'react-router-dom'
 
 const ItemDetailContainer = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
+  const [productNotFound, setProductNotFound] = useState(false);
 
   useEffect(() => {
     const db = getFirestore();
@@ -18,6 +21,7 @@ const ItemDetailContainer = () => {
           setProduct({ id, ...productData });
         } else {
           console.log("Producto no encontrado");
+          setProductNotFound(true); 
         }
       })
       .catch((error) => {
@@ -25,12 +29,24 @@ const ItemDetailContainer = () => {
       });
   }, [id]);
 
-
   return (
     <div className='margin-top-70' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-      {product ? <ItemDetail product={product} /> : <Loader></Loader>}
+      {productNotFound ? (
+        <div>
+          <p className='productoNoExiste'>El producto no existe.</p>
+          <div style={{ textAlign: 'center', marginTop: '10px' }}>
+            <Link to={'/'}>
+              <Button variant='solid' colorScheme='yellow'>Continuar comprando</Button>
+            </Link>
+          </div>
+        </div>
+      ) : product ? (
+        <ItemDetail product={product} />
+      ) : (
+        <Loader />
+      )}
     </div>
   );
-};
+}  
 
 export default ItemDetailContainer;

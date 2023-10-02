@@ -25,6 +25,11 @@ body .fondoAmarillo {
   margin-top:70px;
 }
 
+.margin-t-b-70{
+  margin-top: 70px;
+  margin-bottom: 70px;
+}
+
 
 body .card {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -51,9 +56,7 @@ body .card:hover {
   margin-bottom: 16px;
 }
 
-/* background-image: url('https://c02.purpledshub.com/uploads/sites/41/2021/08/mountains-7ddde89.jpg');
-background-size: cover;
-filter: blur(5px); */
+
 
 .Button {
   background-color: lightgray;
@@ -113,6 +116,9 @@ filter: blur(5px); */
   cursor: not-allowed;
 }
 
+.productoNoExiste{
+  margin-top: 20px;
+}
 /* Cart.css */
 
 .cart-container {
@@ -124,6 +130,7 @@ filter: blur(5px); */
   max-width: 500px;
   margin:  auto;
   margin-top:100px;
+  margin-bottom: 70px;
 }
 
 .cart-title {
@@ -248,3 +255,36 @@ filter: blur(5px); */
   .checkOutForm button:hover {
     background-color: #f3c11b;
   }
+
+/* footer */
+
+.footer {
+  background-color: #316d93;
+  padding: 20px 0;
+  text-align: center;
+  color:#f0f0f0;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.footer-logo img {
+  max-width: 100px;
+  height: auto;
+}
+
+.footer-contact p {
+  font-size: 14px;
+}

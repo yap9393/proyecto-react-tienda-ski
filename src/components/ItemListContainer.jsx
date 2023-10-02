@@ -21,7 +21,7 @@ useEffect(() => {
 }, []);
 
   return (
-    <div className='margin-top-70'>
+    <div className='margin-t-b-70'>
       <ItemList productos={productos} />
     </div>
   )

@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { collection, addDoc, getFirestore,doc, updateDoc, getDoc } from 'firebase/firestore';
+import { collection, addDoc, getFirestore,doc, updateDoc, getDoc, serverTimestamp } from 'firebase/firestore';
 import Swal from 'sweetalert2';
 import { CartContext } from '../../context/ShoppingCartContext';
 
@@ -93,6 +93,7 @@ const Form = () => {
                 direccion,
                 productos: selectedProducts,
                 total: totalAmount,
+                fecha: serverTimestamp(),
             };
 
             // envio la orden a la base de datos
